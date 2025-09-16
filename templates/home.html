@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Vehicle Speed Detection{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section py-2 mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 hero-content">
+                <h1 class="display-3 fw-bold text-gradient mb-3">Vehicle Speed Detection System</h1>
+                <p class="lead fs-4 mb-4">Advanced AI-powered system for detecting vehicle speeds and license plates in traffic videos with high accuracy.</p>
+                
+                {% if not user.is_authenticated %}
+                <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
+                    <a href="{% url 'signup' %}" class="btn btn-primary btn-lg shadow-lg pulse-btn">
+                        <i class="fas fa-user-plus me-2"></i> Get Started
+                    </a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg shadow-sm">
+                        <i class="fas fa-sign-in-alt me-2"></i> Login
+                    </a>
+                </div>
+                <div class="mt-4 text-muted">
+                    <p class="mb-0"><i class="fas fa-check-circle text-success me-2"></i> No credit card required</p>
+                    <p class="mb-0"><i class="fas fa-check-circle text-success me-2"></i> Free for personal use</p>
+                </div>
+                {% else %}
+                <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
+                    <a href="{% url 'upload_video' %}" class="btn btn-success btn-lg shadow-lg pulse-btn">
+                        <i class="fas fa-upload me-2"></i> Upload Video
+                    </a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg shadow-sm">
+                        <i class="fas fa-tachometer-alt me-2"></i> View Dashboard
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <div class="hero-image-container">
+                    <img src="https://imagevision.ai/wp-content/uploads/2024/01/Overspeeding-Detection-Section-01.jpg" alt="Vehicle Speed Detection" class="img-fluid rounded-lg shadow-lg">
+                    <div class="hero-shape-1"></div>
+                    <div class="hero-shape-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="mb-4">Key Features</h2>
+    </div>
+    <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body text-center p-4">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-tachometer-alt fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title">Speed Detection</h5>
+                <p class="card-text">Real-time vehicle speed detection with visual indicators for overspeed vehicles.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body text-center p-4">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-id-card fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title">License Plate Recognition</h5>
+                <p class="card-text">Automatic license plate detection and text recognition for vehicle identification.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body text-center p-4">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-file-csv fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title">CSV Export</h5>
+                <p class="card-text">Download detailed detection results in CSV format for analysis and reporting.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body text-center p-4">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-chart-line fa-3x text-primary"></i>
+                </div>
+                <h5 class="card-title">User Dashboard</h5>
+                <p class="card-text">Personal dashboard to manage and view all your processed videos and analytics.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- How It Works Section -->
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="mb-4">How It Works</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="how-it-works">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 process-card">
+                        <div class="card-body text-center p-4">
+                            <div class="process-icon mb-3">
+                                <span class="process-number">1</span>
+                                <i class="fas fa-user-plus fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">Create Account</h5>
+                            <p class="card-text">Sign up for a free account or login to access the dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 process-card">
+                        <div class="card-body text-center p-4">
+                            <div class="process-icon mb-3">
+                                <span class="process-number">2</span>
+                                <i class="fas fa-upload fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">Upload Video</h5>
+                            <p class="card-text">Upload your traffic video footage for analysis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 process-card">
+                        <div class="card-body text-center p-4">
+                            <div class="process-icon mb-3">
+                                <span class="process-number">3</span>
+                                <i class="fas fa-cogs fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">AI Processing</h5>
+                            <p class="card-text">Our AI system processes the video to detect vehicles and speeds.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 process-card">
+                        <div class="card-body text-center p-4">
+                            <div class="process-icon mb-3">
+                                <span class="process-number">4</span>
+                                <i class="fas fa-video fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">View Results</h5>
+                            <p class="card-text">Review the processed video with speed detection and license plate recognition.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 process-card">
+                        <div class="card-body text-center p-4">
+                            <div class="process-icon mb-3">
+                                <span class="process-number">5</span>
+                                <i class="fas fa-file-download fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">Download Report</h5>
+                            <p class="card-text">Export detailed CSV reports with all vehicle detections and speed measurements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
